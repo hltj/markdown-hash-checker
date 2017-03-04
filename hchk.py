@@ -34,12 +34,12 @@ re_inner_refs = re.compile(r'\]\((#[^)]+)\)')         # references to hash in sa
 
 
 def get_missed_hashes(path, white_list=set(), tidy_title=trim_title):
-    def is_not_punct(c):
-        return c not in string.punctuation
+    def is_hash_char(c):
+        return c == '-' or c not in string.punctuation
 
     def title_to_hash(title):
         # make the tidied title lower case, remove any punctuation, and then replace all blank space to bar
-        return filter(is_not_punct, tidy_title(title).lower()).replace(' ', '-')
+        return filter(is_hash_char, tidy_title(title).lower()).replace(' ', '-')
 
     all_hashes = set()
     all_refs = set()
