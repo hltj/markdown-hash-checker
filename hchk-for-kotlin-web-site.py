@@ -2,11 +2,11 @@
 # vim: sw=4 ts=4 sts=4 et
 
 import sys
-from hchk import get_missed_hashes, print_result, is_abs_http_ref
+from hchk import get_missed_hashes, print_result, is_abs_http_ref, trim_title
 
 
 def tidy_title(title):
-    return title.replace('{: .keyword }', '').lower()
+    return trim_title(title).replace('{: .keyword }', '').lower()
 
 
 def is_outer_ref(r):

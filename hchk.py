@@ -16,6 +16,10 @@ def is_abs_http_ref(r):
     return r.startswith('http://') or r.startswith('https://')
 
 
+def trim_title(r):
+    return r.strip()
+
+
 re_title = re.compile('\n#+ (.*)\n')                  # markdown title, e.g.
                                                       #    `## Higher-Order Functions`
 
@@ -29,7 +33,7 @@ re_inner_refs = re.compile(r'\]\((#[^)]+)\)')         # references to hash in sa
                                                       #    `](#null-safety-and-platform-types)`
 
 
-def get_missed_hashes(path, white_list=set(), tidy_title=lambda x: x):
+def get_missed_hashes(path, white_list=set(), tidy_title=trim_title):
     def is_not_punct(c):
         return c not in string.punctuation
 
