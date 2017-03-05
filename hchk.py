@@ -23,7 +23,7 @@ def trim_title(r):
 re_title = re.compile('\n#+ (.*)\n')                  # markdown title, e.g.
                                                       #    `## Higher-Order Functions`
 
-re_hash = re.compile(r'\{:#([a-z0-9-_]+)\}')          # explicit specified hash, e.g.
+re_hash = re.compile(r'\{:(#[a-z0-9-_]+)\}')          # explicit specified hash, e.g.
                                                       #    `{:#qualified}`
 
 re_cross_refs = re.compile(r'\]\(([^)]+#[^)]+)\)')    # references to hash in other markdown file, e.g.
