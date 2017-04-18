@@ -14,10 +14,7 @@ def is_outer_ref(r):
     return r.startswith('grammar.html#') or is_abs_http_ref(r)
 
 if __name__ == '__main__':
-    # `<a name="declarations"` is not supported currently
-    white_list = {'type-safe-builders.html#declarations'}
-
     path = len(sys.argv) > 1 and sys.argv[1] or '.'
-    refs_map, all_missed = get_missed_hashes(path, white_list, tidy_title)
+    refs_map, all_missed = get_missed_hashes(path, tidy_title=tidy_title)
 
     print_result(refs_map, all_missed, is_outer_ref)
